@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="enter_zip_code">Enter Zip Code</string>
+    <string name="weekly_weather_update">Weekly Weather Update</string>
+</resources>
