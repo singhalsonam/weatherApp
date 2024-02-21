@@ -33,6 +33,10 @@ Feature/weatherApp
 
 Go to test -> ForecastViewModelTest -> runTest
 
+*Screenshots*
+![forecast_ss1](https://github.com/singhalsonam/weatherApp/assets/65971690/ff6d14eb-da35-4afb-8343-0ce9eb7a528a)
+![forecast_2](https://github.com/singhalsonam/weatherApp/assets/65971690/56dbbf2f-9782-4767-b1ba-c0cad3a9fafd)
+
 
 
    
