@@ -6,15 +6,15 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
+    private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
+
     fun getInstance(): Retrofit {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         val client: OkHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
-        return Retrofit.Builder().baseUrl("https://api.openweathermap.org/data/2.5/")
+        return Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
-            // we need to add converter factory to
-            // convert JSON object to Java object
             .build()
     }
 }

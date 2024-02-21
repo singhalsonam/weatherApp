@@ -12,11 +12,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.demo.weatherapp.R
 import com.demo.weatherapp.data.model.WeatherForecast
 import com.demo.weatherapp.databinding.ActivityMainBinding
 import com.demo.weatherapp.utils.NetworkUtils
 
-class MainActivity : AppCompatActivity() {
+class WeatherForecastActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var forecastAdapter: ForecastAdapter
     private val forecastViewModel: ForecastViewModel by viewModels()
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         if(isError) {
             Toast.makeText(
                 this,
-                "Something went wrong, please try again later!",
+                getString(R.string.something_went_wrong_please_try_again_later),
                 Toast.LENGTH_LONG
             ).show()
         }
