@@ -1,11 +1,13 @@
 package com.demo.weatherapp.ui
 
+import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var forecastAdapter: ForecastAdapter
     private val forecastViewModel: ForecastViewModel by viewModels()
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -33,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * To observe livedata from ForecastViewModel
      */
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun observeForecast() {
         forecastViewModel.isError.observe(this, Observer { oneTimeEvent ->
             oneTimeEvent.consume {

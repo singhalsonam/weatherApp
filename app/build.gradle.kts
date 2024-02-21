@@ -70,15 +70,24 @@ dependencies {
     implementation ("com.squareup.okhttp3:okhttp:4.9.3")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.3")
     implementation ("com.github.bumptech.glide:glide:4.11.0")
+    implementation("androidx.test:core-ktx:1.5.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
+
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("io.mockk:mockk:1.12.4")
+    androidTestImplementation ("androidx.test:core:1.5.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1") {
+        exclude("org.jetbrains.kotlinx", "kotlinx-coroutines-debug")
+    }
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+// AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation("androidx.test:runner:1.5.2")
+    androidTestImplementation ("androidx.test.ext:junit:1.1.5")
     // coroutine
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
