@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.demo.weatherapp.data.model.WeatherForecast
 import com.demo.weatherapp.databinding.ActivityMainBinding
+import com.demo.weatherapp.utils.NetworkUtils
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -26,7 +27,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.etZipcode.setOnEditorActionListener { textView, actionId, keyEvent ->
             if ((keyEvent != null && (keyEvent.keyCode == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                forecastViewModel.getWeatherForecast(textView.text.toString())
+                if (NetworkUtils().isOnline(this)) forecastViewModel.getWeatherForecast(textView.text.toString())
+                else updateView(true)
             }
             return@setOnEditorActionListener false
         }

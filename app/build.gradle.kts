@@ -83,6 +83,7 @@ dependencies {
 // AndroidJUnitRunner and JUnit Rules
     androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestImplementation ("androidx.test.ext:junit:1.1.5")
+    testImplementation ("org.robolectric:robolectric:4.4")
     // coroutine
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
