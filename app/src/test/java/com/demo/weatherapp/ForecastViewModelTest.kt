@@ -1,5 +1,6 @@
 package com.demo.weatherapp
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.demo.weatherapp.data.model.City
 import com.demo.weatherapp.data.model.Forecast
 import com.demo.weatherapp.data.model.Main
@@ -13,12 +14,15 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestDispatcher
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.TestRule
 import retrofit2.Response
 
 /**
@@ -27,6 +31,8 @@ import retrofit2.Response
 
 @ExperimentalCoroutinesApi
 class ForecastViewModelTest {
+    @get:Rule
+    val rule: TestRule = InstantTaskExecutorRule()
     // This dispatcher controls the execution of coroutines in tests
     private val testDispatcher: TestDispatcher = UnconfinedTestDispatcher()
 
@@ -50,7 +56,7 @@ class ForecastViewModelTest {
     }
 
     @Test
-    fun `test successful API response`() {
+    fun `test successful API response`() = runTest {
         // Mocking a successful API response
         val response = Forecast(
             city = City(name = "CityName"),
@@ -72,11 +78,13 @@ class ForecastViewModelTest {
 
         // Ensuring that isError LiveData is not set to true
         assertNotNull(viewModel.isError.value)
-        assertEquals(false.toString(), viewModel.isError.value.toString())
+        viewModel.isError.value?.consume {
+            assertEquals(false, it)
+        }
     }
 
     @Test
-    fun `test null API response`() {
+    fun `test null API response`() = runTest {
         // Mocking a null API response
         coEvery { mockRepository.getWeatherForecast(any()) } returns Response.success(null)
 
@@ -85,6 +93,8 @@ class ForecastViewModelTest {
 
         // Ensuring that isError LiveData is set to true
         assertNotNull(viewModel.isError.value)
-        assertEquals(true.toString(), viewModel.isError.value.toString())
+        viewModel.isError.value?.consume {
+            assertEquals(true, it)
+        }
     }
 }
