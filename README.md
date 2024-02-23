@@ -33,9 +33,15 @@ Feature/weatherApp
 
 Go to test -> ForecastViewModelTest -> runTest
 
+*Test Coverage*
+
+![Screenshot (116)](https://github.com/singhalsonam/weatherApp/assets/65971690/130df635-5fac-4e1f-b6c2-95260fa47c67)
+![Screenshot (117)](https://github.com/singhalsonam/weatherApp/assets/65971690/c3722332-d4f8-4ae1-91f9-2e9f7bf95889)
+
 *Screenshots*
 ![forecast_ss1](https://github.com/singhalsonam/weatherApp/assets/65971690/ff6d14eb-da35-4afb-8343-0ce9eb7a528a)
 ![forecast_2](https://github.com/singhalsonam/weatherApp/assets/65971690/56dbbf2f-9782-4767-b1ba-c0cad3a9fafd)
+
 
 
 
